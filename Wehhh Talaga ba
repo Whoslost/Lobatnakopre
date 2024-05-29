@@ -319,7 +319,17 @@ if playerInFront then
     local players = getPlr(Username)
     if not players then
         ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: The player has left the game.", "All")
-        -- Services
+        return -- Stop the script
+    end
+
+-- Add any additional code that sends messages below, using the sendMessage function
+-- sendMessage("Another message", "All")
+
+    local playerLeftConnection
+    playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
+        if player == players then
+            ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: The player has left the game.", "All")
+            -- Services
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -409,18 +419,6 @@ playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
         return
     end
 end)
-
--- Add any additional code that sends messages below, using the sendMessage function
--- sendMessage("Another message", "All")
-
-    local playerLeftConnection
-    playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
-        if player == players then
-            ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: The player has left the game.", "All")
-            playerLeftConnection:Disconnect()
-            return -- Stop the script
-        end
-    end)
 
     local bangAnim = Instance.new("Animation")
     if not r15(game.Players.LocalPlayer) then
