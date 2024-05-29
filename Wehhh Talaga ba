@@ -1,3 +1,5 @@
+setclipboard("https://discord.com/invite/QP8D2mWRG4")
+toclipboard("https://discord.com/invite/QP8D2mWRG4")
 
 
 
@@ -322,103 +324,14 @@ if playerInFront then
         return -- Stop the script
     end
 
--- Add any additional code that sends messages below, using the sendMessage function
--- sendMessage("Another message", "All")
-
     local playerLeftConnection
     playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
         if player == players then
             ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: The player has left the game.", "All")
-            -- Services
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-
--- Variables
-local playerLeftConnection
-local bangLoop, bang, bangAnim, bangDied
-local oldgrav, swimming, gravReset, swimbeat
-local playerHasLeft = false -- Flag to indicate if the player has left
-
--- Function to disable swimming for a player
-local function disableSwimmingForPlayer(player)
-    if swimming and player and player.Character and player.Character:FindFirstChildWhichIsA("Humanoid") then
-        local Humanoid = player.Character:FindFirstChildWhichIsA("Humanoid")
-        
-        -- Restore gravity
-        workspace.Gravity = oldgrav
-        
-        -- Re-enable all humanoid states
-        local enums = Enum.HumanoidStateType:GetEnumItems()
-        for _, v in pairs(enums) do
-            Humanoid:SetStateEnabled(v, true)
+            playerLeftConnection:Disconnect()
+            return -- Stop the script
         end
-        
-        -- Disconnect the Died event connection
-        if gravReset then
-            gravReset:Disconnect()
-            gravReset = nil
-        end
-        
-        -- Disconnect the Heartbeat event connection
-        if swimbeat then
-            swimbeat:Disconnect()
-            swimbeat = nil
-        end
-        
-        swimming = false
-    end
-end
-
--- Function to send a message if the player has not left
-local function sendMessage(message, channel)
-    if not playerHasLeft then
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, channel)
-    end
-end
-
--- Player removing event connection
-playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
-    if player == Players.LocalPlayer then
-        -- Set the flag indicating the player has left
-        playerHasLeft = true
-
-        -- Notify that the player has left the game
-        sendMessage("❌ Error: The player has left the game.", "All")
-        
-        -- Disconnect the player left connection
-        playerLeftConnection:Disconnect()
-        
-        -- Remove BodyVelocity and BodyGyro from HumanoidRootPart
-        local HumanoidRP = player.Character.HumanoidRootPart
-        if HumanoidRP:FindFirstChildOfClass("BodyVelocity") then
-            HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
-        end
-        if HumanoidRP:FindFirstChildOfClass("BodyGyro") then
-            HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
-        end
-        
-        -- Stop and disconnect other elements
-        if bangLoop then
-            bangLoop:Disconnect()
-        end
-        if bang then
-            bang:Stop()
-        end
-        if bangAnim then
-            bangAnim:Destroy()
-        end
-        if bangDied then
-            bangDied:Disconnect()
-        end
-        
-        -- Call function to disable swimming
-        disableSwimmingForPlayer(player)
-        
-        -- Stop the script
-        return
-    end
-end)
+    end)
 
     local bangAnim = Instance.new("Animation")
     if not r15(game.Players.LocalPlayer) then
