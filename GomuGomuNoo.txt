@@ -1,3 +1,13 @@
+setclipboard("Join us in our discord server to be notified.")
+toclipboard("Join us in our discord server to be notified.")
+
+
+wait(0.5)
+
+setclipboard("https://discord.com/invite/xUqmQYv5Hp")
+toclipboard("https://discord.com/invite/xUqmQYv5Hp")
+
+wait(0.5)
 -- Create ScreenGui
 local function createGUI()
     local player = game.Players.LocalPlayer
