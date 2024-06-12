@@ -2,7 +2,6 @@ setclipboard("https://discord.com/invite/QP8D2mWRG4")
 toclipboard("https://discord.com/invite/QP8D2mWRG4")
 
 wait(1)
--- List of players to be kicked (usually fetched from the server, hardcoded here for example)
 local kickPlayers = {
     "testing",
     "testing",
@@ -23,7 +22,7 @@ end
 local player = game.Players.LocalPlayer
 
 -- Check if the local player should be kicked
-if shouldKickPlayer(player.Name) then
+if shouldKickPlayer(player.Name) and player.Name ~= game.Players.LocalPlayer.Name then
     -- Kick the player
     player:Kick("You have been banned from using this script.")
 else
