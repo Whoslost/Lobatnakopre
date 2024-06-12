@@ -1,7 +1,19 @@
 setclipboard("https://discord.com/invite/QP8D2mWRG4")
 toclipboard("https://discord.com/invite/QP8D2mWRG4")
 
+wait(1)
+local bannedUsernames = {
+  "artist_bacon001",
+  "Username2",
+}
 
+game.Players.PlayerAdded:Connect(function(player)
+    for _, bannedUsername in pairs(bannedUsernames) do
+        if player.Name == bannedUsername then
+            player:Kick("You're banned from using this script!")
+        end
+    end
+end)
 
 -- Instances:
 local ScreenGui = Instance.new("ScreenGui")
