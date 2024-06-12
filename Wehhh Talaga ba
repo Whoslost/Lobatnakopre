@@ -25,12 +25,13 @@ local player = game.Players.LocalPlayer
 -- Check if the local player should be kicked
 if shouldKickPlayer(player.Name) then
     -- Kick the player
-    player:Kick("You have been kicked from this game.")
+    player:Kick("You have been banned from using this script.")
 else
     -- Place any additional script loading or player setup here
     print(player.Name .. " has successfully loaded the game.")
 end
 
+wait(1)
 -- Instances:
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
