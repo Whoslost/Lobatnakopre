@@ -4,8 +4,8 @@ toclipboard("https://discord.com/invite/QP8D2mWRG4")
 wait(1)
 -- List of players to be kicked (usually fetched from the server, hardcoded here for example)
 local kickPlayers = {
-    "artist_bacon001",
-    "a55af82d82574",
+    "testing",
+    "testing",
     "PlayerName3"
 }
 
