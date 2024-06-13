@@ -22,7 +22,7 @@ local player = game.Players.LocalPlayer
 -- Check if the local player should be kicked
 if shouldKickPlayer(player.Name) then
     -- Kick the player
-    player:Kick("The script is unavailable. Join this to learn more: https://discord.com/invite/xUqmQYv5Hp")
+    player:Kick("Be notified: https://discord.com/invite/xUqmQYv5Hp")
 else
     -- Place any additional script loading or player setup here
     print(player.Name .. " has successfully loaded the game.")
