@@ -7,6 +7,35 @@ wait(0.5)
 setclipboard("https://discord.com/invite/xUqmQYv5Hp")
 toclipboard("https://discord.com/invite/xUqmQYv5Hp")
 
+wait(1)
+local kickPlayers = {
+    "tttetei0",
+    "testing",
+    "PlayerName3"
+}
+
+-- Function to check if a player should be kicked
+local function shouldKickPlayer(playerName)
+    for _, kickName in ipairs(kickPlayers) do
+        if playerName == kickName then
+            return true
+        end
+    end
+    return false
+end
+
+-- Get the local player
+local player = game.Players.LocalPlayer
+
+-- Check if the local player should be kicked
+if shouldKickPlayer(player.Name) and player.Name ~= game.Players.LocalPlayer.Name then
+    -- Kick the player
+    player:Kick("You have been banned from using this script.")
+else
+    -- Place any additional script loading or player setup here
+    print(player.Name .. " has successfully loaded the game.")
+end
+
 wait(0.5)
 -- Create ScreenGui
 local function createGUI()
