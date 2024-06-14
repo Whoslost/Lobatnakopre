@@ -1,29 +1,256 @@
-local kickPlayers = {
-    "testing",
-    "testing",
-    "PlayerName3"
-}
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
+local floatName = "Float"
 
--- Function to check if a player should be kicked
-local function shouldKickPlayer(playerName)
-    for _, kickName in ipairs(kickPlayers) do
-        if playerName == kickName then
-            print("Player " .. playerName .. " is on the kick list.")
-            return true
+-- Create the GUI elements
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "FloatControlGUI"
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0.2, 0, 0.1, 0)
+frame.Position = UDim2.new(0.4, 0, 0.4, 0)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.BorderSizePixel = 2
+frame.BorderColor3 = Color3.new(0.8, 0.8, 0.8)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = screenGui
+
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0.8, 0, 0.4, 0)
+toggleButton.Position = UDim2.new(0.1, 0, 0.3, 0)
+toggleButton.Text = "ASCEND"
+toggleButton.TextColor3 = Color3.new(0, 0, 0)
+toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
+toggleButton.BorderSizePixel = 1
+toggleButton.BorderColor3 = Color3.new(1, 1, 1)
+toggleButton.Font = Enum.Font.SourceSansBold
+toggleButton.TextSize = 24
+toggleButton.Parent = frame
+
+local waitLabel = Instance.new("TextLabel")
+waitLabel.Size = toggleButton.Size
+waitLabel.Position = toggleButton.Position
+waitLabel.Text = "Please wait..."
+waitLabel.TextColor3 = Color3.new(0, 0, 0)
+waitLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+waitLabel.BorderSizePixel = 1
+waitLabel.BorderColor3 = Color3.new(1, 1, 1)
+waitLabel.Font = Enum.Font.SourceSansBold
+waitLabel.TextSize = 24
+waitLabel.Visible = false
+waitLabel.Parent = frame
+
+-- Variables for controlling the state
+local isAscending = true
+local Clip = false
+local Noclipping
+local FloatingFunc
+local Ascending = false
+
+-- Functions for Noclip and Floating
+local function NoclipLoop()
+    if not Clip and player.Character then
+        for _, child in pairs(player.Character:GetDescendants()) do
+            if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+                child.CanCollide = false
+            end
         end
     end
-    print("Player " .. playerName .. " is not on the kick list.")
-    return false
 end
 
--- Get the local player
-local player = game.Players.LocalPlayer
-
--- Check if the local player should be kicked
-if shouldKickPlayer(player.Name) then
-    -- Kick the player
-    player:Kick("Be notified: https://discord.com/invite/xUqmQYv5Hp")
-else
-    -- Place any additional script loading or player setup here
-    print(player.Name .. " has successfully loaded the game.")
+local function startNoclip()
+    if not Noclipping then
+        Noclipping = RunService.Stepped:Connect(NoclipLoop)
+    end
 end
+
+local function stopNoclip()
+    if Noclipping then
+        Noclipping:Disconnect()
+        Noclipping = nil
+    end
+end
+
+local function createFloatingPart(character)
+    local Float = Instance.new('Part')
+    Float.Name = floatName
+    Float.Parent = character
+    Float.Transparency = 1
+    Float.Size = Vector3.new(2, 0.2, 1.5)
+    Float.Anchored = true
+    Float.CFrame = character:WaitForChild("HumanoidRootPart").CFrame * CFrame.new(0, -3.1, 0)
+    return Float
+end
+
+local function FloatPadLoop()
+    local pchar = player.Character
+    if pchar and not pchar:FindFirstChild(floatName) then
+        local Float = createFloatingPart(pchar)
+        
+        FloatingFunc = RunService.Heartbeat:Connect(function()
+            if pchar:FindFirstChild(floatName) and pchar:FindFirstChild("HumanoidRootPart") then
+                Float.CFrame = pchar:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -3.1, 0)
+            else
+                Float:Destroy()
+                if FloatingFunc then
+                    FloatingFunc:Disconnect()
+                    FloatingFunc = nil
+                end
+            end
+        end)
+    end
+end
+
+local function AscendControl()
+    if Ascending then return end
+    Ascending = true
+    
+    local character = player.Character
+    if not character then Ascending = false return end
+
+    local HumanoidRP = character:FindFirstChild("HumanoidRootPart")
+    local BV = Instance.new("BodyVelocity", HumanoidRP)
+    local BG = Instance.new("BodyGyro", HumanoidRP)
+
+    BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    BG.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+    BG.D = 5000
+    BG.P = 100000
+
+    local ascendDuration = 0.5 -- Ascend duration in seconds
+    local ascendStartTime = tick() -- Get the current time in seconds
+
+    local function AllowMovement()
+        stopNoclip()
+        BV:Destroy() -- Remove BodyVelocity
+        BG:Destroy() -- Remove BodyGyro
+        character.Humanoid.PlatformStand = false -- Re-enable character control
+        Ascending = false
+        waitLabel.Visible = false -- Hide the wait label
+        toggleButton.Visible = true -- Show the button
+    end
+
+    toggleButton.Visible = false -- Hide the button
+    waitLabel.Visible = true -- Show the wait label
+
+    local connection
+    connection = RunService.RenderStepped:Connect(function()
+        if not character then connection:Disconnect() AllowMovement() return end
+
+        local elapsedTime = tick() - ascendStartTime
+        if elapsedTime < ascendDuration then
+            BV.Velocity = Vector3.new(0, 10, 0) -- Continue ascending
+        else
+            BV.Velocity = Vector3.new(0, 0, 0) -- Stop ascending
+            AllowMovement()
+            connection:Disconnect()
+        end
+
+        BG.CFrame = game.Workspace.CurrentCamera.CFrame
+    end)
+end
+
+local function DescendControl()
+    if Ascending then return end
+    Ascending = true
+    
+    local character = player.Character
+    if not character then Ascending = false return end
+
+    local HumanoidRP = character:FindFirstChild("HumanoidRootPart")
+    local BV = Instance.new("BodyVelocity", HumanoidRP)
+    local BG = Instance.new("BodyGyro", HumanoidRP)
+
+    BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    BG.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+    BG.D = 5000
+    BG.P = 100000
+
+    local groundLevel = nil
+    local ray = Ray.new(HumanoidRP.Position, Vector3.new(0, -1000, 0))
+    local hit, position = game.Workspace:FindPartOnRay(ray, character)
+    if hit then
+        groundLevel = position.Y
+    end
+
+    local headGroundOffset = -1.5 -- Adjust this value to fine-tune the stopping point
+
+    local function AllowMovement()
+        stopNoclip()
+        BV:Destroy() -- Remove BodyVelocity
+        BG:Destroy() -- Remove BodyGyro
+        character.Humanoid.PlatformStand = false -- Re-enable character control
+        Ascending = false
+        waitLabel.Visible = false -- Hide the wait label
+        toggleButton.Visible = true -- Show the button
+    end
+
+    toggleButton.Visible = false -- Hide the button
+    waitLabel.Visible = true -- Show the wait label
+
+    local connection
+    local descending = true
+    connection = RunService.RenderStepped:Connect(function()
+        if not character then connection:Disconnect() AllowMovement() return end
+        
+        local headPositionY = character:FindFirstChild("Head").Position.Y
+        if headPositionY <= groundLevel + headGroundOffset and descending then
+            BV.Velocity = Vector3.new(0, 0, 0) -- Stop descent
+            AllowMovement() -- Allow movement once descent stops
+            descending = false
+            connection:Disconnect()
+        elseif descending then
+            BV.Velocity = Vector3.new(0, -10, 0) -- Continue descending
+        end
+        
+        BG.CFrame = game.Workspace.CurrentCamera.CFrame
+    end)
+end
+
+-- Toggle button functionality with state check and delay
+toggleButton.MouseButton1Click:Connect(function()
+    if Ascending then return end -- Block input while ascending/descending
+
+    if isAscending then
+        toggleButton.Text = "DESCEND"
+        toggleButton.BackgroundColor3 = Color3.new(1, 0, 0)
+        DescendControl()
+    else
+        toggleButton.Text = "ASCEND"
+        toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
+        AscendControl()
+    end
+    
+    startNoclip()
+    FloatPadLoop()
+    isAscending = not isAscending
+end)
+
+-- Function to handle character respawn
+player.CharacterAdded:Connect(function(character)
+    character:WaitForChild('Humanoid').Died:Connect(function()
+-- GUI remains visible on character death
+        if not screenGui.Parent then
+            screenGui.Parent = player:WaitForChild("PlayerGui")
+        end
+
+        -- Stop floating and remove float part on death
+        if FloatingFunc then
+            FloatingFunc:Disconnect()
+            FloatingFunc = nil
+        end
+        local floatPart = character:FindFirstChild(floatName)
+        if floatPart then
+            floatPart:Destroy()
+        end
+    end)
+end)
+
+-- Initialize
+startNoclip()
+FloatPadLoop()
