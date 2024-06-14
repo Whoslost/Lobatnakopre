@@ -1,206 +1,10 @@
--- Instances:
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
-local TextButton = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local TextLabel_2 = Instance.new("TextLabel")
-local TextLabel_3 = Instance.new("TextLabel")
-local TextButton_2 = Instance.new("TextButton")
-local UICorner_3 = Instance.new("UICorner")
-local TextButton_3 = Instance.new("TextButton")
-local UICorner_4 = Instance.new("UICorner")
-local TextButton_4 = Instance.new("TextButton")
-local UICorner_5 = Instance.new("UICorner")
-local TextButton_5 = Instance.new("TextButton")
-local UICorner_6 = Instance.new("UICorner")
-local TextButton_6 = Instance.new("TextButton")
-local UICorner_7 = Instance.new("UICorner")
-
---Properties:
-ScreenGui.Parent = game:GetService("CoreGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.5, -Frame.Size.X.Offset / 2, 0, 0)
-Frame.Size = UDim2.new(0, 239, 0, 258)
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 0.990
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.0917016193, 0, -0.00302029401, 0)
-TextLabel.Size = UDim2.new(0, 195, 0, 15)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "Start Button"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextSize = 14.000
-
-UICorner.Parent = Frame
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.0794976503, 0, 0.0542635657, 0)
-TextButton.Size = UDim2.new(0, 200, 0, 33)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "START"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextSize = 20.000
-
-UICorner_2.Parent = TextButton
-
-TextLabel_2.Parent = Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 0.990
-TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.BorderSizePixel = 0
-TextLabel_2.Position = UDim2.new(0.0791493207, 0, 0.179150254, 0)
-TextLabel_2.Size = UDim2.new(0, 195, 0, 15)
-TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "Loading Button"
-TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.TextSize = 14.000
-
-TextLabel_3.Parent = Frame
-TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_3.BackgroundTransparency = 0.990
-TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_3.BorderSizePixel = 0
-TextLabel_3.Position = UDim2.new(0.0917016193, 0, 0.403100789, 0)
-TextLabel_3.Size = UDim2.new(0, 195, 0, 16)
-TextLabel_3.Font = Enum.Font.SourceSans
-TextLabel_3.Text = "Error Buttons"
-TextLabel_3.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_3.TextSize = 20.000
-
-TextButton_2.Parent = Frame
-TextButton_2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.BorderSizePixel = 0
-TextButton_2.Position = UDim2.new(0.0753135532, 0, 0.236434102, 0)
-TextButton_2.Size = UDim2.new(0, 200, 0, 33)
-TextButton_2.Font = Enum.Font.SourceSans
-TextButton_2.Text = "Loading"
-TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.TextSize = 20.000
-
-UICorner_3.Parent = TextButton_2
-
-TextButton_3.Parent = Frame
-TextButton_3.BackgroundColor3 = Color3.fromRGB(0, 0, 127)
-TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_3.BorderSizePixel = 0
-TextButton_3.Position = UDim2.new(0.0794976503, 0, 0.496124029, 0)
-TextButton_3.Size = UDim2.new(0, 200, 0, 33)
-TextButton_3.Font = Enum.Font.SourceSans
-TextButton_3.Text = "Manually Stopped"
-TextButton_3.TextColor3 = Color3.fromRGB(170, 0, 0)
-TextButton_3.TextSize = 20.000
-
-UICorner_4.Parent = TextButton_3
-
-TextButton_4.Parent = Frame
-TextButton_4.BackgroundColor3 = Color3.fromRGB(0, 0, 127)
-TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_4.BorderSizePixel = 0
-TextButton_4.Position = UDim2.new(0.0794976503, 0, 0.670542657, 0)
-TextButton_4.Size = UDim2.new(0, 200, 0, 33)
-TextButton_4.Font = Enum.Font.SourceSans
-TextButton_4.Text = "Script Error"
-TextButton_4.TextColor3 = Color3.fromRGB(170, 0, 0)
-TextButton_4.TextSize = 20.000
-
-UICorner_5.Parent = TextButton_4
-
-TextButton_5.Parent = Frame
-TextButton_5.BackgroundColor3 = Color3.fromRGB(0, 0, 127)
-TextButton_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_5.BorderSizePixel = 0
-TextButton_5.Position = UDim2.new(0.0794976503, 0, 0.829457343, 0)
-TextButton_5.Size = UDim2.new(0, 200, 0, 33)
-TextButton_5.Font = Enum.Font.SourceSans
-TextButton_5.Text = "Invalid Target"
-TextButton_5.TextColor3 = Color3.fromRGB(170, 0, 0)
-TextButton_5.TextSize = 20.000
-
-UICorner_6.Parent = TextButton_5
-
-local executed = false
-
-local function toggleFrame()
-    Frame.Visible = not Frame.Visible
-end
-
-TextButton_6.Parent = ScreenGui
-TextButton_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_6.BorderSizePixel = 0
-TextButton_6.Position = UDim2.new(0.776152134, 0, 0, 0)
-TextButton_6.Size = UDim2.new(0, 45, 0, 45)
-TextButton_6.Font = Enum.Font.SourceSans
-TextButton_6.Text = "Here!"
-TextButton_6.TextColor3 = Color3.fromRGB(0, 0, 127)
-TextButton_6.TextSize = 20.000
-TextButton_6.TextWrapped = true
-
-UICorner_7.Parent = TextButton_6
-
+local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
-local UIS = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
 
-local dragging
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-    local delta = input.Position - dragStart
-    TextButton_6.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-
-TextButton_6.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true
-        dragStart = input.Position
-        startPos = TextButton_6.Position
-
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
-    end
-end)
-
-TextButton_6.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
-    end
-end)
-
-UIS.InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
-        update(input)
-    end
-end)
-
-local function executeError(errorMessage)
-    if not executed then
-        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(errorMessage, "All")
-        executed = true
-    end
-end
-
-TextButton.MouseButton1Click:Connect(function()
-   local Players = game:GetService("Players")
+-- Function to execute when Start button is clicked
+local function onStartButtonClick()
+    local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -319,103 +123,14 @@ if playerInFront then
         return -- Stop the script
     end
 
--- Add any additional code that sends messages below, using the sendMessage function
--- sendMessage("Another message", "All")
-
     local playerLeftConnection
     playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
         if player == players then
             ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: The player has left the game.", "All")
-            -- Services
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-
--- Variables
-local playerLeftConnection
-local bangLoop, bang, bangAnim, bangDied
-local oldgrav, swimming, gravReset, swimbeat
-local playerHasLeft = false -- Flag to indicate if the player has left
-
--- Function to disable swimming for a player
-local function disableSwimmingForPlayer(player)
-    if swimming and player and player.Character and player.Character:FindFirstChildWhichIsA("Humanoid") then
-        local Humanoid = player.Character:FindFirstChildWhichIsA("Humanoid")
-        
-        -- Restore gravity
-        workspace.Gravity = oldgrav
-        
-        -- Re-enable all humanoid states
-        local enums = Enum.HumanoidStateType:GetEnumItems()
-        for _, v in pairs(enums) do
-            Humanoid:SetStateEnabled(v, true)
+            playerLeftConnection:Disconnect()
+            return -- Stop the script
         end
-        
-        -- Disconnect the Died event connection
-        if gravReset then
-            gravReset:Disconnect()
-            gravReset = nil
-        end
-        
-        -- Disconnect the Heartbeat event connection
-        if swimbeat then
-            swimbeat:Disconnect()
-            swimbeat = nil
-        end
-        
-        swimming = false
-    end
-end
-
--- Function to send a message if the player has not left
-local function sendMessage(message, channel)
-    if not playerHasLeft then
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, channel)
-    end
-end
-
--- Player removing event connection
-playerLeftConnection = Players.PlayerRemoving:Connect(function(player)
-    if player == Players.LocalPlayer then
-        -- Set the flag indicating the player has left
-        playerHasLeft = true
-
-        -- Notify that the player has left the game
-        sendMessage("❌ Error: The player has left the game.", "All")
-        
-        -- Disconnect the player left connection
-        playerLeftConnection:Disconnect()
-        
-        -- Remove BodyVelocity and BodyGyro from HumanoidRootPart
-        local HumanoidRP = player.Character.HumanoidRootPart
-        if HumanoidRP:FindFirstChildOfClass("BodyVelocity") then
-            HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
-        end
-        if HumanoidRP:FindFirstChildOfClass("BodyGyro") then
-            HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
-        end
-        
-        -- Stop and disconnect other elements
-        if bangLoop then
-            bangLoop:Disconnect()
-        end
-        if bang then
-            bang:Stop()
-        end
-        if bangAnim then
-            bangAnim:Destroy()
-        end
-        if bangDied then
-            bangDied:Disconnect()
-        end
-        
-        -- Call function to disable swimming
-        disableSwimmingForPlayer(player)
-        
-        -- Stop the script
-        return
-    end
-end)
+    end)
 
     local bangAnim = Instance.new("Animation")
     if not r15(game.Players.LocalPlayer) then
@@ -575,39 +290,36 @@ else
     -- If no player was found in front, display an error message
     ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: No player detected in front.", "All")
 end
-end)
-
-TextButton_2.MouseButton1Click:Connect(function()
-    -- Function to send a chat message
-local function sendChatMessage(message)
-    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+    -- Example: Call a function or perform an action
 end
 
--- First loading message
-sendChatMessage("🔄 Loading resources... Please wait as we prepare everything for you.")
-wait(2)
+-- Create the GUI elements
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "DraggableGUI"
+screenGui.Parent = player:WaitForChild("PlayerGui")
 
--- Second loading message
-sendChatMessage("🔄 Almost there... Optimizing your experience, just a moment longer.")
-wait(2)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0.2, 0, 0.1, 0)
+frame.Position = UDim2.new(0.4, 0, 0.4, 0)
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.BorderSizePixel = 2
+frame.BorderColor3 = Color3.new(0.8, 0.8, 0.8)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = screenGui
 
--- Third loading message
-sendChatMessage("🔄 Loading complete! Thank you for your patience. Enjoy the game!")
-end)
+local startButton = Instance.new("TextButton")
+startButton.Size = UDim2.new(0.4, 0, 0.4, 0)
+startButton.Position = UDim2.new(0.3, 0, 0.3, 0)
+startButton.Text = "Start"
+startButton.TextColor3 = Color3.new(0, 0, 0)
+startButton.BackgroundColor3 = Color3.new(0, 1, 0)
+startButton.BorderSizePixel = 1
+startButton.BorderColor3 = Color3.new(1, 1, 1)
+startButton.Font = Enum.Font.SourceSansBold
+startButton.TextSize = 24
+startButton.Parent = frame
 
-TextButton_3.MouseButton1Click:Connect(function()
-    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: Manually Stopped. The process has been halted manually.", "All")
-        end)
-
-TextButton_4.MouseButton1Click:Connect(function()
-
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: Script Error. An unexpected error occurred during the process.", "All")
-        end)
-
-TextButton_5.MouseButton1Click:Connect(function()
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("❌ Error: Invalid Target. Please select a valid target.", "All")
-end)
-
-TextButton_6.MouseButton1Click:Connect(function()
-toggleFrame()
-end)
+-- Event handler for Start button click
+startButton.MouseButton1Click:Connect(onStartButtonClick)
