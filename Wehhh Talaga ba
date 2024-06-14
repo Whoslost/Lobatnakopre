@@ -1,3 +1,11 @@
+setclipboard("JOIN US FOR MORE UPDATE AND SCRIPTS")
+toclipboard("JOIN US FOR MORE UPDATE AND SCRIPTS")
+
+wait(1)
+setclipboard("https://discord.com/invite/DQmTYpyTsZ")
+toclipboard("https://discord.com/invite/DQmTYpyTsZ")
+
+
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
