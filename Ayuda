@@ -1,3 +1,71 @@
+local function createLoadingScreen()
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
+
+    local player = Players.LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+
+    -- Create ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "LoadingScreenGUI"
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = playerGui
+
+    -- Create TextLabel
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Parent = screenGui
+    textLabel.Size = UDim2.new(0.5, 0, 0.1, 0) -- Adjusted size to be more moderate
+    textLabel.Position = UDim2.new(0.5, 0, 0, -50)
+    textLabel.AnchorPoint = Vector2.new(0.5, 0)
+    textLabel.Text = "Sus Script By Menace"
+    textLabel.TextColor3 = Color3.new(1, 0, 0) -- Red color
+    textLabel.TextScaled = true
+    textLabel.BackgroundTransparency = 1
+    textLabel.Font = Enum.Font.SourceSansBold
+
+    -- Tween to move the text to the center
+    local tweenInfo = TweenInfo.new(
+        1, -- Time
+        Enum.EasingStyle.Sine, -- EasingStyle
+        Enum.EasingDirection.InOut, -- EasingDirection
+        0, -- RepeatCount
+        false, -- Reverses
+        0 -- DelayTime
+    )
+    local tweenGoal = {Position = UDim2.new(0.5, 0, 0.5, 0)}
+    local tween = TweenService:Create(textLabel, tweenInfo, tweenGoal)
+
+    tween:Play()
+
+    -- Wait for the tween to complete and stay for 5 seconds
+    tween.Completed:Wait()
+    wait(5)
+
+    -- Tween to move the text down off the screen
+    local tweenInfo2 = TweenInfo.new(
+        1, -- Time
+        Enum.EasingStyle.Sine, -- EasingStyle
+        Enum.EasingDirection.InOut, -- EasingDirection
+        0, -- RepeatCount
+        false, -- Reverses
+        0 -- DelayTime
+    )
+    local tweenGoal2 = {Position = UDim2.new(0.5, 0, 1, 50)}
+    local tween2 = TweenService:Create(textLabel, tweenInfo2, tweenGoal2)
+
+    tween2:Play()
+
+    -- Destroy the text label after the second tween completes
+    tween2.Completed:Connect(function()
+        textLabel:Destroy()
+    end)
+end
+
+-- Create the loading screen when the player joins
+createLoadingScreen()
+
+wait(1)
+
 setclipboard("https://discord.com/invite/xfJb7Ct8D9")
 toclipboard("https://discord.com/invite/xfJb7Ct8D9")
 
