@@ -10,12 +10,10 @@ local localPlayer = game:GetService("Players").LocalPlayer
 local username = localPlayer.Name
 
 -- Check if the username is banned
-for _, bannedUsername in ipairs(bannedUsernames) do
-    if username == bannedUsername then
-        -- Kick the player if their username is banned
-        localPlayer:Kick("You are banned from using this script.")
-        return -- Exit the script to prevent further execution
-    end
+if table.find(bannedUsernames, username) then
+    -- Kick the player if their username is banned
+    localPlayer:Kick("You are banned from using this script.")
+    return -- Exit the script to prevent further execution
 end
 
     local function createLoadingScreen()
