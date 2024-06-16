@@ -1,6 +1,6 @@
 -- Define the list of banned usernames
 local bannedUsernames = {
-    "youislnotxd",
+    "YOUISLNOTXD",
     "BannedUser2",
     "BannedUser3"
 }
