@@ -253,7 +253,7 @@ local function DescendControl()
         groundLevel = position.Y
     end
 
-    local headGroundOffset = -1.5 -- Adjust this value to fine-tune the stopping point
+    local headGroundOffset = -1.4 -- Adjust this value to fine-tune the stopping point
 
     local function AllowMovement()
         stopNoclip()
