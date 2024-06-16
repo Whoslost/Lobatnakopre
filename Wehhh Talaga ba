@@ -292,12 +292,12 @@ toggleButton.MouseButton1Click:Connect(function()
     if Ascending then return end -- Block input while ascending/descending
 
     if isAscending then
-        toggleButton.Text = "DESCEND"
-        toggleButton.BackgroundColor3 = Color3.new(1, 0, 0)
-        DescendControl()
-    else
         toggleButton.Text = "ASCEND"
         toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
+        DescendControl()
+    else
+        toggleButton.Text = "DESCEND"
+        toggleButton.BackgroundColor3 = Color3.new(1, 0, 0)
         AscendControl()
     end
     
