@@ -1,4 +1,24 @@
-local function createLoadingScreen()
+-- Define the list of banned usernames
+local bannedUsernames = {
+    "myleftball212",
+    "BannedUser2",
+    "BannedUser3"
+}
+
+-- Get the local player's username
+local localPlayer = game:GetService("Players").LocalPlayer
+local username = localPlayer.Name
+
+-- Check if the username is banned
+for _, bannedUsername in ipairs(bannedUsernames) do
+    if username == bannedUsername then
+        -- Kick the player if their username is banned
+        localPlayer:Kick("You are banned from using this script.")
+        return -- Exit the script to prevent further execution
+    end
+end
+
+    local function createLoadingScreen()
     local TweenService = game:GetService("TweenService")
     local Players = game:GetService("Players")
 
