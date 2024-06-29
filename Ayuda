@@ -384,9 +384,18 @@ end
 end
 
 -- Create the GUI elements
+local player = game.Players.LocalPlayer
+
+-- Check if the GUI already exists
+local existingGui = player.PlayerGui:FindFirstChild("DraggableGUI")
+if existingGui then
+    existingGui:Destroy() -- Destroy the existing GUI to prevent duplication
+end
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "DraggableGUI"
-screenGui.Parent = player:WaitForChild("PlayerGui")
+screenGui.ResetOnSpawn = false -- Ensures GUI persists even if the player dies
+screenGui.Parent = player.PlayerGui
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0.2, 0, 0.1, 0)
@@ -410,6 +419,7 @@ startButton.BorderColor3 = Color3.new(1, 1, 1)
 startButton.Font = Enum.Font.SourceSansBold
 startButton.TextSize = 24
 startButton.Parent = frame
+
 
 -- Event handler for Start button click
 startButton.MouseButton1Click:Connect(onStartButtonClick)
