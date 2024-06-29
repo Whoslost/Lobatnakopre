@@ -265,7 +265,7 @@ game:GetService('RunService').RenderStepped:connect(function()
 end)
 
     -- Messages during bang animation with adjusted speeds and durations
-    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("СМОNВӀТСН,ЅUСКТНАТСОСК", "All")
+    ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("СМОNВӀТСН,ЅUСКТНАТС⁥⁥⁥⁥OCK", "All")
     bang:AdjustSpeed(7)  -- Adjust speed to 7 after the first message
     wait(3)  -- Duration for the first message
 
